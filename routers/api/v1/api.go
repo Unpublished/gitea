@@ -505,6 +505,7 @@ func RegisterRoutes(m *macaron.Macaron) {
 						Put(bind(api.AddCollaboratorOption{}), repo.AddCollaborator).
 						Delete(repo.DeleteCollaborator)
 				}, reqToken(), reqAdmin())
+				m.Get("/contents", repo.GetContents)
 				m.Get("/raw/*", context.RepoRefByType(context.RepoRefAny), reqRepoReader(models.UnitTypeCode), repo.GetRawFile)
 				m.Get("/archive/*", reqRepoReader(models.UnitTypeCode), repo.GetArchive)
 				m.Combo("/forks").Get(repo.ListForks).
