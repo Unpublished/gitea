@@ -165,15 +165,6 @@ pipeline:
       event: [ push, pull_request ]
       branch: [ master ]
 
-  coverage:
-    image: robertstettner/drone-codecov
-    secrets: [ codecov_token ]
-    files:
-      - coverage.all
-    when:
-      event: [ push, pull_request ]
-      branch: [ master ]
-
   static:
     image: techknowlogick/xgo:latest
     pull: true
